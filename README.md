@@ -1,1 +1,3 @@
-"# CSE-337-Crptography" 
+# CSE-337-Crptography 
+
+Lab work for the course CSE 337 course (Crptography)
