@@ -24,10 +24,8 @@ string Decrypt(string str, int shift){
     return str;
 }
 int main(){
-
     string str="PHHW PH DIWHU WKH WRJD SDUWB",cipher;
     cipher=Decrypt(str,3);
     cout<<"The decrypted text is: "+cipher;
     return 0;
-
 }

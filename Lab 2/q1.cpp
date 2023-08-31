@@ -3,9 +3,7 @@ Input: computerscienceengineeringsrmuniversity
 Output: gsqtyxivwgmirgiirkmriivmrkwvqyrmzivwmxc*/
 #include<iostream>
 #include<String>
-
 using namespace std;
-
 string shift_cipher(string str, int shift){
     int i=0;
     while(str[i]!='\0'){
