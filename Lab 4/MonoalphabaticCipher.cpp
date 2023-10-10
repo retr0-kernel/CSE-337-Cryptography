@@ -1,38 +1,27 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
+#include <string>
 using namespace std;
-string encrypt(string plaintext, string key) {
-    string ciphertext = plaintext;
-    for (int i = 0; i < plaintext.length(); i++) {
-        if (isalpha(plaintext[i])) {
-            char base = isupper(plaintext[i]) ? 'A' : 'a';
-            ciphertext[i] = key[plaintext[i] - base];
+
+string decrypt(string message, string key) {
+    string decrypted = "";
+    int keyIndex = 0;
+    for (int i = 0; i < message.length(); i++) {
+        char c = message[i];
+        char k = key[keyIndex];
+        int diff = c - k;
+        if (diff < 0) {
+            diff += 26;
         }
+        decrypted += 'A' + diff % 26;
+        keyIndex = (keyIndex + 1) % key.length();
     }
-    return ciphertext;
+    return decrypted;
 }
-string decrypt(string ciphertext, string key) {
-    string plaintext = ciphertext;
-    for (int i = 0; i < ciphertext.length(); i++) {
-        if (isalpha(ciphertext[i])) {
-            char base = isupper(ciphertext[i]) ? 'A' : 'a';
-            size_t index = key.find(ciphertext[i]);
-            plaintext[i] = 'A' + index;
-            if (islower(ciphertext[i])) {
-                plaintext[i] = tolower(plaintext[i]);
-            }
-        }
-    }
-    return plaintext;
-}
+
 int main() {
-    string key = "QWERTYUIOPASDFGHJKLZXCVBNM";
-    string plaintext, ciphertext, decryptedText;
-    cout << "Enter a message to encrypt: ";
-    cin >> plaintext;
-    ciphertext = encrypt(plaintext, key);
-    cout << "Encrypted message: " << ciphertext << endl;
-    decryptedText = decrypt(ciphertext, key);
-    cout << "Decrypted message: " << decryptedText << endl;
+    string message = "ZICVTWQNGKZEIIGASXSTSLVVWLA";
+    string key = "DECEPTIVEWEAREDISCOVEREDSAV";
+    string decrypted = decrypt(message, key);
+    cout << "Decrypted message: " << decrypted << endl;
     return 0;
 }
